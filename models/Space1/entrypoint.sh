@@ -14,7 +14,7 @@ while ! nc -z localhost 11436 || ! nc -z localhost 11435; do
   sleep 1
 done
 
-OLLAMA_HOST="127.0.0.1:11436" ollama pull falcon:7b-instruct
+OLLAMA_HOST="127.0.0.1:11436" ollama pull qwen2.5-coder:7b
 OLLAMA_HOST="127.0.0.1:11435" ollama pull mistral:7b
 
 echo "Starting FastAPI..."
