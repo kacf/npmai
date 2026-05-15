@@ -27,7 +27,7 @@ def search_tool(query:str):
     )
     return response
     
-@app.post("/llm")
+@app.post("/mistral")
 async def generate_response(request: PromptRequest):
     llm = OllamaLLM(
         model="mistral:7b",
@@ -66,10 +66,10 @@ async def generate_response(request: PromptRequest):
     else:
         return {"response": response}
 
-@app.post("/llm")
+@app.post("/llm_fall_qwen2")
 async def generate_response(request: PromptRequest):
     llm = OllamaLLM(
-        model="falcon:7b-instruct",
+        model="qwen2.5-coder:7b",
         temperature=request.temperature,
         base_url="http://localhost:11436"
     )
