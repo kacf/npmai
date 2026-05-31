@@ -4,10 +4,10 @@ WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-RUN pip install gunicorn
+RUN pip install uvicorn
 
 COPY . .
 
 ENTRYPOINT []
 
-CMD ["python","-m","app"]
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port $PORT"]
