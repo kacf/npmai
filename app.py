@@ -2,6 +2,7 @@ import httpx
 import asyncio
 from fastapi import FastAPI, Response
 from pydantic import BaseModel
+from typing import Optional
 
 app = FastAPI()
 
