@@ -6,6 +6,8 @@ server:
   port: 10000
   base_url: "/"
   image_proxy: false
+  limiter: false        # ← add this
+  public_instance: true # ← add this
   formats:
     - html
     - json
@@ -26,6 +28,10 @@ botdetection:
   ip_limit:
     disable: true
   ip_via_x_forwarded_for_1:
+    disable: true
+  ip_via_x_real_ip:
+    disable: true
+  method:
     disable: true
 
 engines:
