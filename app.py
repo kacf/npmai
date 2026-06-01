@@ -1,3 +1,26 @@
+from flask import Flask, request, jsonify
+import requests
+
+app = Flask(__name__)
+SEARXNG = "http://localhost:10000"
+
+@app.route("/search")
+def search():
+    q = request.args.get("q", "")
+    fmt = request.args.get("format", "json")
+    r = requests.get(f"{SEARXNG}/search", params={
+        "q": q, "format": fmt, "pageno": 1, "language": "en"
+    }, headers={"User-Agent": "Mozilla/5.0"})
+    return jsonify(r.json())
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)
+
+
+
+
+
+"""
 import httpx
 import asyncio
 from fastapi import FastAPI, Response
@@ -55,3 +78,4 @@ async def connector_load_balancer(inputs:Input):
             response.raise_for_status()
             f_response_f = response.json()["response"]
             return {"response":f_response_f}
+"""
